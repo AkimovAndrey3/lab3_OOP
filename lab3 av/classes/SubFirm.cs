@@ -88,7 +88,7 @@ namespace lab3_av
         public SubFirm(SubFirmType subFirmType, string name, string bossName,
             string officialBossName, string phoneNumber, string email)
         {
-            Type = subFirmType;
+            Type = new SubFirmType(true, "name");
             Name = name;
             BossName = bossName;
             OfficialBossName = officialBossName;
