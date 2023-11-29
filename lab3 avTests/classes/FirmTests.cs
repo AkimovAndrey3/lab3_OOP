@@ -103,9 +103,13 @@ namespace lab3_av.Tests
                             subFirm.BossName, subFirm.OfficialBossName, subFirm.PhoneNumber, subFirm.Email);
 
             Assert.IsNotNull(addedSubFirm);
-            SubFirm gotSubFirm = firm.GetSubFirm(subFirm.Type);
-            Assert.IsNotNull(gotSubFirm);
-            Assert.AreSame(addedSubFirm, gotSubFirm);
+            Assert.AreNotSame(addedSubFirm, subFirm);
+
+            Assert.AreEqual(subFirm.Name, addedSubFirm.Name);
+            Assert.AreEqual(subFirm.BossName, addedSubFirm.BossName);
+            Assert.AreEqual(subFirm.OfficialBossName, addedSubFirm.OfficialBossName);
+            Assert.AreEqual(subFirm.PhoneNumber, addedSubFirm.PhoneNumber);
+            Assert.AreEqual(subFirm.Email, addedSubFirm.Email);
         }
 
     }

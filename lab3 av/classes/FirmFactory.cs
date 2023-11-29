@@ -15,16 +15,11 @@ namespace lab3_av
         public readonly string FieldName3 = "field3";
         public readonly string FieldName4 = "field4";
         public readonly string FieldName5 = "field5";
-        public readonly Dictionary<string, string> UserFields = new Dictionary<string, string>();
+        //public Dictionary<string, string> UserFields { get; set; } = new Dictionary<string, string>();
         private const string MainFirmName = "Main Firm";
 
         public FirmFactory()
         {
-            UserFields.Add(FieldName1, "");
-            UserFields.Add(FieldName2, "");
-            UserFields.Add(FieldName3, "");
-            UserFields.Add(FieldName4, "");
-            UserFields.Add(FieldName5, "");
         }
 
         public Firm Create(string country, string region,
@@ -44,11 +39,11 @@ namespace lab3_av
 
         public void FillUserFields(Firm firm)
         {
-            foreach (var pair in UserFields)
-            {
-                firm.AddField(pair.Key);
-                firm.SetField(pair.Key, pair.Value);
-            }
+            firm.AddField(FieldName1);
+            firm.AddField(FieldName2);
+            firm.AddField(FieldName3);
+            firm.AddField(FieldName4);
+            firm.AddField(FieldName5);
         }
     }
 }

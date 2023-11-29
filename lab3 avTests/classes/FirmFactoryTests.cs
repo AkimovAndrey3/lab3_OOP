@@ -48,12 +48,17 @@ namespace lab3_av.Tests
             Assert.IsTrue(createdFirm.Main.OfficialBossName == officialBossName);
             Assert.IsTrue(createdFirm.Main.PhoneNumber == phoneNumber);
 
-            foreach (var userField in FirmFactoryV2.UserFields)
-            {
-                string fieldValue = null;
-                fieldValue = createdFirm.GetField(userField.Key);
-                Assert.IsNotNull(fieldValue);
-            }
+            string fieldValue = null;
+            fieldValue = createdFirm.GetField(FirmFactoryV2.FieldName1);
+            Assert.IsNotNull(fieldValue);
+            fieldValue = createdFirm.GetField(FirmFactoryV2.FieldName2);
+            Assert.IsNotNull(fieldValue);
+            fieldValue = createdFirm.GetField(FirmFactoryV2.FieldName3);
+            Assert.IsNotNull(fieldValue);
+            fieldValue = createdFirm.GetField(FirmFactoryV2.FieldName4);
+            Assert.IsNotNull(fieldValue);   
+            fieldValue = createdFirm.GetField(FirmFactoryV2.FieldName5);
+            Assert.IsNotNull(fieldValue);
 
             Assert.IsNotNull(createdFirm.Main);
             Assert.IsTrue(createdFirm.Main.Type.IsMain);
