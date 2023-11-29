@@ -138,6 +138,8 @@ namespace lab3_av
             }
         }
 
+        public int SubFirmsAmount => 1 + SubFirms.Count;
+
         public SubFirm Main { get; private set; }                       
         public Dictionary<string, string> UserFields => _userFields;
         public List<SubFirm> SubFirms => _subFirms;
@@ -228,7 +230,7 @@ namespace lab3_av
             {
                 return subFirm;
             }
-            subFirm = new SubFirm(subFirmType, "", bossName, officialBossName, phoneNumber, email);
+            subFirm = new SubFirm(subFirmType, name, bossName, officialBossName, phoneNumber, email);
             _subFirms.Add(subFirm);
             return subFirm;
         }

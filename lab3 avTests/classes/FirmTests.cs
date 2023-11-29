@@ -99,6 +99,9 @@ namespace lab3_av.Tests
             Firm firm = FirmFactory.Create("Kazakhstan", "qebe", "Astana", "NurSultan",
                 "143585", "efvw;ijbrb", ";wjlefhb;wrtb;", new DateTime(1345, 6, 7),
                 "SUPERBOSS", "SUPER SUPERBOSS", "+712845734346");
+
+            Assert.IsTrue(firm.SubFirmsAmount == 1);
+
             SubFirm addedSubFirm = firm.AddSubFirm(subFirm.Type, subFirm.Name,
                             subFirm.BossName, subFirm.OfficialBossName, subFirm.PhoneNumber, subFirm.Email);
 
@@ -110,7 +113,9 @@ namespace lab3_av.Tests
             Assert.AreEqual(subFirm.OfficialBossName, addedSubFirm.OfficialBossName);
             Assert.AreEqual(subFirm.PhoneNumber, addedSubFirm.PhoneNumber);
             Assert.AreEqual(subFirm.Email, addedSubFirm.Email);
+
+            Assert.IsTrue(firm.SubFirmsAmount == 2);
         }
+
     }
-    //
 }
