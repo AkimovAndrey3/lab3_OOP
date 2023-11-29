@@ -228,7 +228,7 @@ namespace lab3_av
             {
                 return subFirm;
             }
-            subFirm = new SubFirm(subFirmType, name, bossName, officialBossName, phoneNumber, email);
+            subFirm = new SubFirm(subFirmType, "", bossName, officialBossName, phoneNumber, email);
             _subFirms.Add(subFirm);
             return subFirm;
         }

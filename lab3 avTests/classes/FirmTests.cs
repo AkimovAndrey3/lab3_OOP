@@ -111,6 +111,6 @@ namespace lab3_av.Tests
             Assert.AreEqual(subFirm.PhoneNumber, addedSubFirm.PhoneNumber);
             Assert.AreEqual(subFirm.Email, addedSubFirm.Email);
         }
-
     }
+    //
 }
