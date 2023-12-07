@@ -93,7 +93,29 @@ namespace lab3_av.Tests
 
         //У фирмы запрашиваем подразделение по типу, возвращается подразделение и сравниваем его на равенство
         [TestMethod()]
-        public void AddSubFirmTest2()
+        public void GetSubfirmByTypeTest()
+        {
+            SubFirm subFirm = new SubFirm(new SubFirmType(false, "qev;e"), "qev;e", "QWrgergw'e", "qerlgqer;", "-74346758076", "qefihwdf.nbv");
+            Firm firm = FirmFactory.Create("Kazakhstan", "qebe", "Astana", "NurSultan",
+                "143585", "efvw;ijbrb", ";wjlefhb;wrtb;", new DateTime(1345, 6, 7),
+                "SUPERBOSS", "SUPER SUPERBOSS", "+712845734346");
+
+            SubFirm addedSubFirm = firm.AddSubFirm(subFirm.Type, subFirm.Name,
+                            subFirm.BossName, subFirm.OfficialBossName, subFirm.PhoneNumber, subFirm.Email);
+
+            Assert.IsNotNull(addedSubFirm);
+            Assert.AreNotSame(addedSubFirm, subFirm);
+
+            Assert.AreEqual(subFirm.Name, addedSubFirm.Name);
+            Assert.AreEqual(subFirm.BossName, addedSubFirm.BossName);
+            Assert.AreEqual(subFirm.OfficialBossName, addedSubFirm.OfficialBossName);
+            Assert.AreEqual(subFirm.PhoneNumber, addedSubFirm.PhoneNumber);
+            Assert.AreEqual(subFirm.Email, addedSubFirm.Email);
+        }
+
+        //Проверка увеличения кол-ва подфирм
+        [TestMethod()]
+        public void ChangeSubFirmAmountTest()
         {
             SubFirm subFirm = new SubFirm(new SubFirmType(false, "qev;e"), "qev;e", "QWrgergw'e", "qerlgqer;", "-74346758076", "qefihwdf.nbv");
             Firm firm = FirmFactory.Create("Kazakhstan", "qebe", "Astana", "NurSultan",
@@ -116,6 +138,5 @@ namespace lab3_av.Tests
 
             Assert.IsTrue(firm.SubFirmsAmount == 2);
         }
-
     }
 }

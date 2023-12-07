@@ -117,16 +117,11 @@ namespace lab3_av.Tests
                 == firm2.GetField(FirmFactoryV2.FieldName4));
             Assert.IsFalse(firm1.GetField(FirmFactoryV2.FieldName5)
                 == firm2.GetField(FirmFactoryV2.FieldName5));
-
-
-            Assert.ThrowsException<ArgumentException>(() =>
-            {
-                firm1.AddField("FieldName6");
-            });
         }
 
+        //Пытаемся добавить в фирму шесте поле, должно появиться исключение
         [TestMethod()]
-        public void CreateTest_3Firms()
+        public void AddExtraUserFieldTest()
         {
             const string name = "name";
             const string country = "country";
@@ -150,6 +145,5 @@ namespace lab3_av.Tests
             });
         }
     }
-    //Пфтаемся добавить в фирму шесте поле, должно появиться исключение
 }
 
