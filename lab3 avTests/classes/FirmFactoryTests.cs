@@ -12,7 +12,6 @@ namespace lab3_av.Tests
     [TestClass()]
     public class FirmFactoryTests
     {
-        //public static FirmFactory FirmFactory { get; } = new FirmFactory();
         public FirmFactory FirmFactoryV2 { get; } = new FirmFactory();
 
         [TestMethod()]
