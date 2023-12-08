@@ -142,4 +142,5 @@ namespace lab3_av.Tests
             Assert.AreSame(addedSubFirm, addedSubFirm2);
         }
     }
+    //Создаете фирму, добавляете в нее 2 подразделения разноготипа и по типу получаем подразделение
 }
