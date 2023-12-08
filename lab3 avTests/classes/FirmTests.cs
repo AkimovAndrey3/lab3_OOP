@@ -134,6 +134,11 @@ namespace lab3_av.Tests
             Assert.AreEqual(subFirm.OfficialBossName, addedSubFirm.OfficialBossName);
             Assert.AreEqual(subFirm.PhoneNumber, addedSubFirm.PhoneNumber);
             Assert.AreEqual(subFirm.Email, addedSubFirm.Email);
+
+            SubFirm addedSubFirm2 = firm.AddSubFirm(subFirm.Type, subFirm.Name,
+                subFirm.BossName, subFirm.OfficialBossName, subFirm.PhoneNumber, subFirm.Email);
+
+            Assert.AreSame(addedSubFirm, addedSubFirm2);
         }
     }
 }
