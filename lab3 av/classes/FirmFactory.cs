@@ -15,9 +15,11 @@ namespace lab3_av
         public readonly string FieldName3 = "field3";
         public readonly string FieldName4 = "field4";
         public readonly string FieldName5 = "field5";
+
+        private const string MainFirmName = "Main Firm";
+
         public IReadOnlyCollection<string> UserFields => _userFields;
         private List<string> _userFields = new List<string>();
-        private const string MainFirmName = "Main Firm";
 
         public FirmFactory()
         {
