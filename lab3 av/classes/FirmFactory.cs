@@ -47,11 +47,10 @@ namespace lab3_av
 
         public void FillUserFields(Firm firm)
         {
-            firm.AddField(FieldName1);
-            firm.AddField(FieldName2);
-            firm.AddField(FieldName3);
-            firm.AddField(FieldName4);
-            firm.AddField(FieldName5);
+            foreach (var field in _userFields)
+            {
+                firm.AddField(field);
+            }
         }
     }
 }

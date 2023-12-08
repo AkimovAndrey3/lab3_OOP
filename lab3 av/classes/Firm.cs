@@ -141,7 +141,7 @@ namespace lab3_av
         public int SubFirmsAmount => 1 + SubFirms.Count;
 
         public SubFirm Main { get; private set; }                       
-        public Dictionary<string, string> UserFields => _userFields;
+        public IReadOnlyDictionary<string, string> UserFields => _userFields;
         public List<SubFirm> SubFirms => _subFirms;
 
         private string _name;
