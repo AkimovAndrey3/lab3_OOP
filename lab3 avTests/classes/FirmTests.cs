@@ -138,6 +138,7 @@ namespace lab3_av.Tests
             SubFirm addedSubFirm2 = firm.AddSubFirm(subFirm.Type, subFirm.Name,
                 subFirm.BossName, subFirm.OfficialBossName, subFirm.PhoneNumber, subFirm.Email);
 
+            Assert.IsTrue(firm.SubFirmsAmount == 2);
             Assert.AreSame(addedSubFirm, addedSubFirm2);
         }
     }
