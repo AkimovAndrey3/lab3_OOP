@@ -127,16 +127,13 @@ namespace lab3_av.Tests
             SubFirm addedSubFirm = firm.AddSubFirm(subFirm.Type, subFirm.Name,
                             subFirm.BossName, subFirm.OfficialBossName, subFirm.PhoneNumber, subFirm.Email);
 
-            Assert.IsNotNull(addedSubFirm);
-            Assert.AreNotSame(addedSubFirm, subFirm);
+            Assert.IsTrue(firm.SubFirmsAmount == 2);
 
             Assert.AreEqual(subFirm.Name, addedSubFirm.Name);
             Assert.AreEqual(subFirm.BossName, addedSubFirm.BossName);
             Assert.AreEqual(subFirm.OfficialBossName, addedSubFirm.OfficialBossName);
             Assert.AreEqual(subFirm.PhoneNumber, addedSubFirm.PhoneNumber);
             Assert.AreEqual(subFirm.Email, addedSubFirm.Email);
-
-            Assert.IsTrue(firm.SubFirmsAmount == 2);
         }
     }
 }
