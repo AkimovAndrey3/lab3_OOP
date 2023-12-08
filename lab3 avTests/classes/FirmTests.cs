@@ -141,6 +141,41 @@ namespace lab3_av.Tests
             Assert.IsTrue(firm.SubFirmsAmount == 2);
             Assert.AreSame(addedSubFirm, addedSubFirm2);
         }
+
+        [TestMethod()]
+        public void GetDifferentSubFirmByTypeTest()
+        {
+            SubFirm subFirm1 = new SubFirm(new SubFirmType(false, "type1"), "qev;e", "QWrgergw'e", "qerlgqer;", "-74346758076", "qefihwdf.nbv");
+            SubFirm subFirm2 = new SubFirm(new SubFirmType(false, "type2"), "qev;e", "QWrgergw'e", "qerlgqer;", "-74346758076", "qefihwdf.nbv");
+
+            Firm firm = FirmFactory.Create("Kazakhstan", "qebe", "Astana", "NurSultan",
+                "143585", "efvw;ijbrb", ";wjlefhb;wrtb;", new DateTime(1345, 6, 7),
+                "SUPERBOSS", "SUPER SUPERBOSS", "+712845734346");
+
+            Assert.IsTrue(firm.SubFirmsAmount == 1);
+
+            SubFirm addedSubFirm = firm.AddSubFirm(subFirm1.Type, subFirm1.Name,
+                            subFirm1.BossName, subFirm1.OfficialBossName, subFirm1.PhoneNumber, subFirm1.Email);
+
+            Assert.IsTrue(firm.SubFirmsAmount == 2);
+
+            SubFirm addedSubFirm2 = firm.AddSubFirm(subFirm2.Type, subFirm2.Name,
+                subFirm2.BossName, subFirm2.OfficialBossName, subFirm2.PhoneNumber, subFirm2.Email);
+
+            Assert.IsTrue(firm.SubFirmsAmount == 3);
+            Assert.AreNotSame(addedSubFirm, addedSubFirm2);
+
+            SubFirm gotSubFirm1 = firm.GetSubFirm(subFirm1.Type);
+            SubFirm gotSubFirm2 = firm.GetSubFirm(subFirm2.Type);
+
+            Assert.AreNotEqual(gotSubFirm1.Name, gotSubFirm2.Name);
+            Assert.AreNotEqual(gotSubFirm1.BossName, gotSubFirm2.BossName);
+            Assert.AreNotEqual(gotSubFirm1.OfficialBossName, gotSubFirm2.OfficialBossName);
+            Assert.AreNotEqual(gotSubFirm1.PhoneNumber, gotSubFirm2.PhoneNumber);
+            Assert.AreNotEqual(gotSubFirm1.Email, gotSubFirm2.Email);
+
+            Assert.AreNotSame(gotSubFirm1, gotSubFirm2);
+        }
     }
     //Создаете фирму, добавляете в нее 2 подразделения разноготипа и по типу получаем подразделение
 }

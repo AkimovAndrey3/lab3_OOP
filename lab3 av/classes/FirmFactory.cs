@@ -15,11 +15,17 @@ namespace lab3_av
         public readonly string FieldName3 = "field3";
         public readonly string FieldName4 = "field4";
         public readonly string FieldName5 = "field5";
-        //public Dictionary<string, string> UserFields { get; set; } = new Dictionary<string, string>();
+        public IReadOnlyCollection<string> UserFields => _userFields;
+        private List<string> _userFields = new List<string>();
         private const string MainFirmName = "Main Firm";
 
         public FirmFactory()
         {
+            _userFields.Add(FieldName1);
+            _userFields.Add(FieldName2);
+            _userFields.Add(FieldName3);
+            _userFields.Add(FieldName4);
+            _userFields.Add(FieldName5);
         }
 
         public Firm Create(string country, string region,
