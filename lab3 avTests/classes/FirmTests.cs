@@ -168,17 +168,17 @@ namespace lab3_av.Tests
             SubFirm gotSubFirm1 = firm.GetSubFirm(subFirm1.Type);
             SubFirm gotSubFirm2 = firm.GetSubFirm(subFirm2.Type);
 
-            Assert.AreEqual(addedSubFirm1.Name, gotSubFirm1.Name);
-            Assert.AreEqual(addedSubFirm1.BossName, gotSubFirm1.BossName);
-            Assert.AreEqual(addedSubFirm1.OfficialBossName, gotSubFirm1.OfficialBossName);
-            Assert.AreEqual(addedSubFirm1.PhoneNumber, gotSubFirm1.PhoneNumber);
-            Assert.AreEqual(addedSubFirm1.Email, gotSubFirm1.Email);
+            Assert.AreEqual(subFirm1.Name, gotSubFirm1.Name);
+            Assert.AreEqual(subFirm1.BossName, gotSubFirm1.BossName);
+            Assert.AreEqual(subFirm1.OfficialBossName, gotSubFirm1.OfficialBossName);
+            Assert.AreEqual(subFirm1.PhoneNumber, gotSubFirm1.PhoneNumber);
+            Assert.AreEqual(subFirm1.Email, gotSubFirm1.Email);
 
-            Assert.AreEqual(addedSubFirm2.Name, gotSubFirm2.Name);
-            Assert.AreEqual(addedSubFirm2.BossName, gotSubFirm2.BossName);
-            Assert.AreEqual(addedSubFirm2.OfficialBossName, gotSubFirm2.OfficialBossName);
-            Assert.AreEqual(addedSubFirm2.PhoneNumber, gotSubFirm2.PhoneNumber);
-            Assert.AreEqual(addedSubFirm2.Email, gotSubFirm2.Email);
+            Assert.AreEqual(subFirm2.Name, gotSubFirm2.Name);
+            Assert.AreEqual(subFirm2.BossName, gotSubFirm2.BossName);
+            Assert.AreEqual(subFirm2.OfficialBossName, gotSubFirm2.OfficialBossName);
+            Assert.AreEqual(subFirm2.PhoneNumber, gotSubFirm2.PhoneNumber);
+            Assert.AreEqual(subFirm2.Email, gotSubFirm2.Email);
 
             Assert.AreNotSame(gotSubFirm1, gotSubFirm2);
         }
