@@ -115,6 +115,8 @@ namespace lab3_av.Tests
             gotSubFirm1.AddContact(contact);
             gotSubFirm2.AddContact(contact);
 
+            Assert.IsTrue(firm.ContactsAmount == 2);
+
             var contacts = firm.Contacts;
             foreach (var item in contacts)
             {
