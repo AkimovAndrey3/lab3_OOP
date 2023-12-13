@@ -180,7 +180,8 @@ namespace lab3_av.Tests
             Assert.AreEqual(subFirm2.PhoneNumber, gotSubFirm2.PhoneNumber);
             Assert.AreEqual(subFirm2.Email, gotSubFirm2.Email);
 
-            Assert.AreNotSame(gotSubFirm1, gotSubFirm2);
+            Assert.AreNotSame(subFirm1, gotSubFirm1);
+            Assert.AreNotSame(subFirm2, gotSubFirm2);
         }
     }
     //Создаете фирму, добавляете в нее 2 подразделения разного типа и по типу получаем подразделение
