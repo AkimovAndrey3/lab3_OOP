@@ -143,7 +143,6 @@ namespace lab3_av
         public SubFirm Main { get; private set; }                       
         public IReadOnlyDictionary<string, string> UserFields => _userFields;
         public List<SubFirm> SubFirms => _subFirms;
-        public List<Contact> Contacts => GetContacts();
 
 
         private string _name;
@@ -218,7 +217,8 @@ namespace lab3_av
         }
         public Contact GetContact(Contact contact)
         {
-            return Main.GetContact(contact);
+            List <Contact> contacts = GetContacts();
+            return contacts.Find(c => c == contact);
         }
         public Contact GetSubFirmContact(SubFirmType subFirmType, Contact contact)
         {

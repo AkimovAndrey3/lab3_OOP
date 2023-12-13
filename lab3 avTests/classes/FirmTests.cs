@@ -112,14 +112,16 @@ namespace lab3_av.Tests
             firm.AddContactToSubFirm(subFirm1.Type, contact);
             firm.AddContactToSubFirm(subFirm2.Type, contact);
 
+            Contact contact1 = firm.GetContact(contact);
+            Contact contact2 = firm.GetContact(contact);
+
             Assert.IsTrue(firm.ContactsAmount == 2);
 
-            var contacts = firm.Contacts;
-            foreach (var item in contacts)
-            {
-                Assert.AreEqual(item, contact);
-                Assert.AreNotSame(item, contact);
-            }
+            Assert.AreNotSame(contact1, contact);
+            Assert.AreNotSame(contact2, contact);
+
+            Assert.AreEqual(contact1, contact);
+            Assert.AreEqual(contact2, contact);
         }
 
         //У фирмы запрашиваем подразделение по типу, возвращается подразделение и сравниваем его на равенство
