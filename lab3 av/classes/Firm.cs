@@ -143,6 +143,8 @@ namespace lab3_av
         public SubFirm Main { get; private set; }                       
         public IReadOnlyDictionary<string, string> UserFields => _userFields;
         public List<SubFirm> SubFirms => _subFirms;
+        public List<Contact> Contacts => GetContacts();
+
 
         private string _name;
         private string _country;
@@ -201,6 +203,18 @@ namespace lab3_av
                 throw new ArgumentException("Sub firm with given type does't exists");
             }
             return subFirm.AddContact(contact);
+        }
+
+        private List<Contact> GetContacts()
+        {
+            List<Contact> contacts = new List<Contact>();
+            contacts.AddRange(Main.Contacts);
+
+            foreach (var subFirm in _subFirms)
+            {
+                contacts.AddRange(subFirm.Contacts);
+            }
+            return contacts;
         }
         public Contact GetContact(Contact contact)
         {

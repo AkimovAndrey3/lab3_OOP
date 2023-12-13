@@ -91,7 +91,37 @@ namespace lab3_av.Tests
             Assert.AreNotSame(contact, gotContact);
         }
         //Создаем 2 подразделения разного типа, добавляем им контакт, возвращаете от фирмы все контакты по контакту их должно оказаться 2 и сравниваем с оригиналом
+        [TestMethod()]
+        public void Add2ContactsToSubFirmsTest()
+        {
+            SubFirm subFirm1 = new SubFirm(new SubFirmType(false, "type1"), "1", "1", "1", "1", "1");
+            SubFirm subFirm2 = new SubFirm(new SubFirmType(false, "type2"), "2", "2", "2", "2", "2");
 
+            Contact contact = new Contact(new ContactType("1", "1"), "1", "1", new DateTime(2020, 1, 1), new DateTime(2020, 2, 2));
+
+            Firm firm = FirmFactory.Create("Kazakhstan", "qebe", "Astana", "NurSultan",
+                "143585", "efvw;ijbrb", ";wjlefhb;wrtb;", new DateTime(1345, 6, 7),
+                "SUPERBOSS", "SUPER SUPERBOSS", "+712845734346");
+
+            firm.AddSubFirm(subFirm1.Type, subFirm1.Name,
+                            subFirm1.BossName, subFirm1.OfficialBossName, subFirm1.PhoneNumber, subFirm1.Email);
+
+            firm.AddSubFirm(subFirm2.Type, subFirm2.Name,
+                subFirm2.BossName, subFirm2.OfficialBossName, subFirm2.PhoneNumber, subFirm2.Email);
+
+            SubFirm gotSubFirm1 = firm.GetSubFirm(subFirm1.Type);
+            SubFirm gotSubFirm2 = firm.GetSubFirm(subFirm2.Type);
+
+            gotSubFirm1.AddContact(contact);
+            gotSubFirm2.AddContact(contact);
+
+            var contacts = firm.Contacts;
+            foreach (var item in contacts)
+            {
+                Assert.AreEqual(item, contact);
+                Assert.AreNotSame(item, contact);
+            }
+        }
 
         //У фирмы запрашиваем подразделение по типу, возвращается подразделение и сравниваем его на равенство
         [TestMethod()]
