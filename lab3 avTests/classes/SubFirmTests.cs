@@ -22,4 +22,5 @@ namespace lab3_av.Tests
             Assert.IsTrue(isEquals);
         }
     }
+
 }

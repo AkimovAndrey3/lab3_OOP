@@ -109,11 +109,8 @@ namespace lab3_av.Tests
             firm.AddSubFirm(subFirm2.Type, subFirm2.Name,
                 subFirm2.BossName, subFirm2.OfficialBossName, subFirm2.PhoneNumber, subFirm2.Email);
 
-            SubFirm gotSubFirm1 = firm.GetSubFirm(subFirm1.Type);
-            SubFirm gotSubFirm2 = firm.GetSubFirm(subFirm2.Type);
-
-            firm.AddContactToSubFirm(gotSubFirm1.Type, contact);
-            firm.AddContactToSubFirm(gotSubFirm2.Type, contact);
+            firm.AddContactToSubFirm(subFirm1.Type, contact);
+            firm.AddContactToSubFirm(subFirm2.Type, contact);
 
             Assert.IsTrue(firm.ContactsAmount == 2);
 

@@ -132,6 +132,13 @@ namespace lab3_av.Tests
             Firm firm1 = FirmFactoryV2.Create(country, region, town, street, postIndex, email, websiteUrl,
                 enterDate, bossName, officialBossName, phoneNumber);
 
+            foreach (var field in FirmFactoryV2.UserFields)
+            {
+                Assert.IsTrue(firm1.GetField(field) == "");
+            }
+
+            Assert.IsTrue(firm1.UserFields.Count == 5);
+
             Assert.ThrowsException<ArgumentException>(() =>
             {
                 firm1.AddField("FieldName6");
