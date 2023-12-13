@@ -88,34 +88,28 @@ namespace lab3_av.Tests
 
             const string value1 = "value1";
             const string value2 = "value2";
-            const string value3 = "value3";
-            const string value4 = "value4";
-            const string value5 = "value5";
-            const string value6 = "value6";
 
+            foreach (var field in FirmFactoryV2.UserFields)
+            {
+                firm1.SetField(field, value1);
+                firm2.SetField(field, value1);    
+            }
 
-            firm1.SetField(FirmFactoryV2.FieldName1, value1);
-            firm1.SetField(FirmFactoryV2.FieldName2, value2);
-            firm1.SetField(FirmFactoryV2.FieldName3, value3);
-            firm1.SetField(FirmFactoryV2.FieldName4, value4);
-            firm1.SetField(FirmFactoryV2.FieldName5, value5);
+            foreach (var field in FirmFactoryV2.UserFields)
+            {
+                Assert.IsTrue(firm1.GetField(field)
+                == firm2.GetField(field));
+            }
+            foreach (var field in FirmFactoryV2.UserFields)
+            {
+                firm2.SetField(field, value2);
+            }
 
-            firm2.SetField(FirmFactoryV2.FieldName1, value5);
-            firm2.SetField(FirmFactoryV2.FieldName2, value4);
-            firm2.SetField(FirmFactoryV2.FieldName3, value6);
-            firm2.SetField(FirmFactoryV2.FieldName4, value2);
-            firm2.SetField(FirmFactoryV2.FieldName5, value1);
-
-            Assert.IsFalse(firm1.GetField(FirmFactoryV2.FieldName1)
-                == firm2.GetField(FirmFactoryV2.FieldName1));
-            Assert.IsFalse(firm1.GetField(FirmFactoryV2.FieldName2)
-                == firm2.GetField(FirmFactoryV2.FieldName2));
-            Assert.IsFalse(firm1.GetField(FirmFactoryV2.FieldName3)
-                == firm2.GetField(FirmFactoryV2.FieldName3));
-            Assert.IsFalse(firm1.GetField(FirmFactoryV2.FieldName4)
-                == firm2.GetField(FirmFactoryV2.FieldName4));
-            Assert.IsFalse(firm1.GetField(FirmFactoryV2.FieldName5)
-                == firm2.GetField(FirmFactoryV2.FieldName5));
+            foreach (var field in FirmFactoryV2.UserFields)
+            {
+                Assert.IsFalse(firm1.GetField(field)
+                == firm2.GetField(field));
+            }
         }
 
         //Пытаемся добавить в фирму шесте поле, должно появиться исключение
