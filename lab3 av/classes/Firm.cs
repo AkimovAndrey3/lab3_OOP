@@ -204,6 +204,28 @@ namespace lab3_av
             return subFirm.AddContact(contact);
         }
 
+        public List<Contact> GetContactsByType(ContactType contactType)
+        {
+            List<Contact> contacts = new List<Contact>();
+            List<Contact> gotContacts = new List<Contact>();
+
+            gotContacts = Main.GetContactsByType(contactType);
+            if (gotContacts.Count != 0)
+            {
+                contacts.AddRange(gotContacts);
+            }
+
+            foreach (var subFirm in _subFirms)
+            {
+                gotContacts = subFirm.GetContactsByType(contactType);
+                if (gotContacts.Count != 0)
+                {
+                    contacts.AddRange(gotContacts);
+                }
+            }
+
+            return contacts;
+        }
         public List<Contact> GetContacts(Contact contact)
         {
             List<Contact> contacts = new List<Contact>();

@@ -113,6 +113,10 @@ namespace lab3_av
         {
             return _contacts.FindAll(current => current == contact);
         }
+        public List<Contact> GetContactsByType(ContactType contactType)
+        {
+            return _contacts.FindAll(current => current.Type == contactType);
+        }
 
         public bool IsContactExists(Contact contact)
         {

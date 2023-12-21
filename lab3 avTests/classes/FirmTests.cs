@@ -118,7 +118,7 @@ namespace lab3_av.Tests
 
             Assert.IsTrue(firm.ContactsAmount == 2);
 
-            var contacts = firm.GetContacts(contact);
+            List<Contact> contacts = firm.GetContacts(contact);
             foreach (var item in contacts)
             {
                 Assert.AreEqual(item, contact);
@@ -150,12 +150,12 @@ namespace lab3_av.Tests
 
             Assert.IsTrue(firm.ContactsAmount == 2);
 
-            List<Contact> gotContactList1 = firm.GetContacts(contact1);
+            List<Contact> gotContactList1 = firm.GetContactsByType(contact1.Type);
             Assert.IsTrue(gotContactList1.Count == 1);
             Contact gotContact1 = gotContactList1[0];
             Assert.IsNotNull(gotContact1);
 
-            List<Contact> gotContactList2 = firm.GetContacts(contact2);
+            List<Contact> gotContactList2 = firm.GetContactsByType(contact2.Type);
             Assert.IsTrue(gotContactList2.Count == 1);
             Contact gotContact2 = gotContactList2[0];
             Assert.IsNotNull(gotContact2);
