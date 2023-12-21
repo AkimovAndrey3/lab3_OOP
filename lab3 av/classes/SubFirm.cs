@@ -82,7 +82,7 @@ namespace lab3_av
         private string _phoneNumber;
         private string _email;
 
-        public List<Contact> Contacts => _contacts;
+        //public List<Contact> Contacts => _contacts;
         private List<Contact> _contacts = new List<Contact>();
 
         public SubFirm(SubFirmType subFirmType, string name, string bossName,
@@ -105,22 +105,18 @@ namespace lab3_av
 
         public Contact AddContact(Contact contact)
         {
-            Contact addedContact = contact;
-            if (!IsContactExists(contact))
-            {
-                addedContact = contact.Clone();
-                _contacts.Add(addedContact);
-            }
+            Contact addedContact = contact.Clone();
+            _contacts.Add(contact.Clone());
             return addedContact;
         }
-        public Contact GetContact(Contact contact)
+        public List<Contact> GetContacts(Contact contact)
         {
-            return _contacts.FirstOrDefault(current => current == contact);
+            return _contacts.FindAll(current => current == contact);
         }
 
         public bool IsContactExists(Contact contact)
         {
-            return GetContact(contact) != null as object;
+            return GetContacts(contact) != null as object;
         }
 
         public bool IsEqualType(SubFirmType subFirmType)

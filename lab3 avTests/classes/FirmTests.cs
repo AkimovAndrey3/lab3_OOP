@@ -49,7 +49,7 @@ namespace lab3_av.Tests
             Contact addedContact = firm.AddContact(_contact);
             Assert.AreNotSame(_contact, addedContact);
             Assert.IsTrue(firm.IsContactExists(_contact));
-            Assert.IsNotNull(firm.GetContact(_contact));
+            Assert.IsTrue(firm.GetContacts(_contact).Count != 0);
 
             Assert.IsTrue(addedContact == _contact);
 
@@ -84,12 +84,16 @@ namespace lab3_av.Tests
             SubFirm addedSubFirm = firm.GetSubFirm(subFirm.Type);
             Assert.IsNotNull(addedSubFirm);
             Assert.IsTrue(addedSubFirm.IsContactExists(contact));
-            Contact gotContact = firm.GetSubFirmContact(subFirm.Type, contact);
+            Contact gotContact = firm.GetSubFirmContact(subFirm.Type, contact)[0];
             Assert.IsNotNull(gotContact);
             
             Assert.IsNotNull(gotContact);
             Assert.AreNotSame(contact, gotContact);
         }
+
+
+        //----------------------------
+
         //Создаем 2 подразделения разного типа, добавляем им контакт, возвращаете от фирмы все контакты по контакту их должно оказаться 2 и сравниваем с оригиналом
         [TestMethod()]
         public void Add2ContactsToSubFirmsTest()
@@ -112,17 +116,58 @@ namespace lab3_av.Tests
             firm.AddContactToSubFirm(subFirm1.Type, contact);
             firm.AddContactToSubFirm(subFirm2.Type, contact);
 
-            Contact contact1 = firm.GetContact(contact);
-            Contact contact2 = firm.GetContact(contact);
+            Assert.IsTrue(firm.ContactsAmount == 2);
+
+            var contacts = firm.GetContacts(contact);
+            foreach (var item in contacts)
+            {
+                Assert.AreEqual(item, contact);
+                Assert.AreNotSame(item, contact);
+            }
+        }
+
+        [TestMethod()]
+        public void Add2DifferentContactsToSubFirmsTest()
+        {
+            SubFirm subFirm1 = new SubFirm(new SubFirmType(false, "type1"), "1", "1", "1", "1", "1");
+            SubFirm subFirm2 = new SubFirm(new SubFirmType(false, "type2"), "2", "2", "2", "2", "2");
+
+            Contact contact1 = new Contact(new ContactType("1", "1"), "1", "1", new DateTime(2020, 1, 1), new DateTime(2020, 2, 2));
+            Contact contact2 = new Contact(new ContactType("2", "2"), "2", "2", new DateTime(2020, 2, 2), new DateTime(2020, 3, 3));
+
+            Firm firm = FirmFactory.Create("Kazakhstan", "qebe", "Astana", "NurSultan",
+                "143585", "efvw;ijbrb", ";wjlefhb;wrtb;", new DateTime(1345, 6, 7),
+                "SUPERBOSS", "SUPER SUPERBOSS", "+712845734346");
+
+            firm.AddSubFirm(subFirm1.Type, subFirm1.Name,
+                            subFirm1.BossName, subFirm1.OfficialBossName, subFirm1.PhoneNumber, subFirm1.Email);
+
+            firm.AddSubFirm(subFirm2.Type, subFirm2.Name,
+                subFirm2.BossName, subFirm2.OfficialBossName, subFirm2.PhoneNumber, subFirm2.Email);
+
+            firm.AddContactToSubFirm(subFirm1.Type, contact1);
+            firm.AddContactToSubFirm(subFirm2.Type, contact2);
 
             Assert.IsTrue(firm.ContactsAmount == 2);
 
-            Assert.AreNotSame(contact1, contact);
-            Assert.AreNotSame(contact2, contact);
+            List<Contact> gotContactList1 = firm.GetContacts(contact1);
+            Assert.IsTrue(gotContactList1.Count == 1);
+            Contact gotContact1 = gotContactList1[0];
+            Assert.IsNotNull(gotContact1);
 
-            Assert.AreEqual(contact1, contact);
-            Assert.AreEqual(contact2, contact);
+            List<Contact> gotContactList2 = firm.GetContacts(contact2);
+            Assert.IsTrue(gotContactList2.Count == 1);
+            Contact gotContact2 = gotContactList2[0];
+            Assert.IsNotNull(gotContact2);
+
+            Assert.AreEqual(gotContact1, contact1);
+            Assert.AreNotSame(gotContact1, contact1);
+
+            Assert.AreEqual(gotContact2, contact2);
+            Assert.AreNotSame(gotContact2, contact2);
+
         }
+        //----------------------------
 
         //У фирмы запрашиваем подразделение по типу, возвращается подразделение и сравниваем его на равенство
         [TestMethod()]

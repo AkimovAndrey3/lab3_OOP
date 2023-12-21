@@ -204,30 +204,38 @@ namespace lab3_av
             return subFirm.AddContact(contact);
         }
 
-        private List<Contact> GetContacts()
+        public List<Contact> GetContacts(Contact contact)
         {
             List<Contact> contacts = new List<Contact>();
-            contacts.AddRange(Main.Contacts);
+            List<Contact> gotContacts = new List<Contact>();
+
+            gotContacts = Main.GetContacts(contact);
+            if(gotContacts.Count != 0)
+            {
+                contacts.AddRange(gotContacts);
+            }
 
             foreach (var subFirm in _subFirms)
             {
-                contacts.AddRange(subFirm.Contacts);
+                gotContacts = subFirm.GetContacts(contact);
+                if (gotContacts.Count != 0)
+                {
+                    contacts.AddRange(gotContacts);
+                }
             }
+
             return contacts;
         }
-        public Contact GetContact(Contact contact)
-        {
-            List <Contact> contacts = GetContacts();
-            return contacts.Find(c => c == contact);
-        }
-        public Contact GetSubFirmContact(SubFirmType subFirmType, Contact contact)
+
+
+        public List<Contact> GetSubFirmContact(SubFirmType subFirmType, Contact contact)
         {
             SubFirm subFirm = _subFirms.FirstOrDefault(current => current.Type == subFirmType);
             if (subFirm == null)
             {
                 throw new ArgumentException("Sub firm with given type does't exists");
             }
-            return subFirm.GetContact(contact);
+            return subFirm.GetContacts(contact);
         }
         public bool IsContactExists(Contact contact)
         {
